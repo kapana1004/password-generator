@@ -7,6 +7,7 @@ export default function Strength({
   isSymbols,
 }) {
   const [counter, setCounter] = useState(0);
+  const [strengthName, setStrengthName] = useState("");
 
   useEffect(() => {
     let count = 0;
@@ -15,13 +16,17 @@ export default function Strength({
     if (isDigits) count++;
     if (isSymbols) count++;
     setCounter(count);
+    if (counter == 0) setStrengthName("TOO WEAK!");
+    if (counter == 1) setStrengthName("WEAK!");
+    if (counter == 2) setStrengthName("MEDIUM");
+    if (counter == 3) setStrengthName("STRONG");
   }, [isDigits, isLowerCase, isSymbols, isUpperCase]);
 
   return (
     <div className=" w-[311px] bg-[#18171F] flex flex-row items-center justify-between h-[56px] p-[16px] mt-[32px] mb-[16px]">
       <span className=" text-[#817D92] text-[16px]">STRENGTH</span>{" "}
       <div className=" flex flex-row gap-[8px]">
-        <span className=" text-[#E6E5EA]">MEDIUM</span>
+        <span className=" text-[#E6E5EA]">{strengthName}</span>
         <div
           className={`w-[10px] h-[28px] border-[1px] 
           ${counter == 1 && " bg-[#F64A4A]"}

@@ -14,7 +14,7 @@ function App() {
   const [isDigits, setIsDigits] = useState(false);
   const [isSymbols, setIsSymbols] = useState(false);
 
-  const [minValue, setMinValue] = useState(5);
+  const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(20);
 
   const handleRangeChange = (e) => {
@@ -26,7 +26,9 @@ function App() {
   const calculateBackgroundColor = () => {
     // Customize this function according to your requirements
     // For example, setting a gradient based on the length value
-    const gradientColor = `linear-gradient(90deg, #A4FFAF ${length}%, #18171F ${length}%)`;
+    const gradientColor = `linear-gradient(90deg, #A4FFAF ${
+      length * 5
+    }%, #18171F ${length}%)`;
     return gradientColor;
   };
 
