@@ -4,7 +4,7 @@ import copyIcon from "../public/assets/images/icon-copy.svg";
 import arrowIcon from "../public/assets/images/icon-arrow-right.svg";
 import Strength from "./components/Strength";
 import greenArrowIcon from "../public/assets/images/icon-arrow-right-green.svg";
-import copy from "react-copy-to-clipboard";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 
 function App() {
   const [password, setPassword] = useState("");
@@ -13,6 +13,8 @@ function App() {
   const [isLowerCase, setIsLowerCase] = useState(false);
   const [isDigits, setIsDigits] = useState(false);
   const [isSymbols, setIsSymbols] = useState(false);
+
+  const [copy, setCopy] = useState(false);
 
   const [minValue, setMinValue] = useState(0);
   const [maxValue, setMaxValue] = useState(20);
@@ -53,18 +55,28 @@ function App() {
 
     setPassword(password);
   };
-  // const copyText = () => {
-  //   copy(length);
-  //   alert(`You have copied "${password}"`);
-  // };
 
   return (
     <div className=" flex flex-col justify-center items-center w-[375px] h-[667px] bg-black">
       <h1 className=" text-[#817D92] mb-[16px]">password generator</h1>
 
-      <div className=" bg-[#24232C] w-[343px] h-[63px] flex justify-between items-center p-[10px] mb-[16px]">
-        <p className=" text-[24px] text-[#E6E5EA]">{password}</p>{" "}
-        <img className=" w-[17.5px] h-[20px]" src={copyIcon} alt="" />
+      <div className=" bg-[#24232C] w-[343px] h-[63px] flex justify-between items-center p-[10px] mb-[16px] relative">
+        <p className=" text-[24px] text-[#E6E5EA]">
+          {password ? password : "P4$5W0rD!"}
+        </p>{" "}
+        <CopyToClipboard text={password} onCopy={() => setCopy(true)}>
+          <img
+            className=" w-[17.5px] h-[20px] cursor-pointer hover:opacity-50 "
+            src={copyIcon}
+            alt=""
+          />
+        </CopyToClipboard>
+        {copy && password ? (
+          <span className=" text-slate-400 text-[11px] absolute top-[75%] left-[87%]">
+            {" "}
+            copied
+          </span>
+        ) : null}
       </div>
       <div className=" bg-[#24232C] pl-[15px] pr-[15px] w-[343px]">
         <div className=" flex flex-row justify-between items-center w-[311px] h-[31px] pt-[21px] pb-[23px]">
