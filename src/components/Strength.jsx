@@ -26,9 +26,9 @@ export default function Strength({
     <div className=" w-[311px] bg-[#18171F] flex flex-row items-center justify-between h-[56px] p-[16px] mt-[32px] mb-[16px]">
       <span className=" text-[#817D92] text-[16px]">STRENGTH</span>{" "}
       <div className=" flex flex-row gap-[8px]">
-        <span className=" text-[#E6E5EA]">{strengthName}</span>
+        <span className=" text-[#E6E5EA] text-[16px]">{strengthName}</span>
         <div
-          className={`w-[10px] h-[28px] border-[1px] 
+          className={`w-[10px] h-[25px] border-[1px] 
           ${counter == 1 && " bg-[#F64A4A]"}
           ${counter == 2 && " bg-[#FB7C58]"}
           ${counter == 3 && " bg-[#F8CD65]"}
@@ -36,19 +36,19 @@ export default function Strength({
            `}
         ></div>
         <div
-          className={`w-[10px] h-[28px] border-[1px]   
+          className={`w-[10px] h-[25px] border-[1px]   
           ${counter == 2 && " bg-[#FB7C58]"}
           ${counter == 3 && " bg-[#F8CD65]"}
           ${counter == 4 && " bg-[#A4FFAF]"}`}
         ></div>
         <div
-          className={`w-[10px] h-[28px] border-[1px]  ${
+          className={`w-[10px] h-[25px] border-[1px]  ${
             counter == 3 && " bg-[#F8CD65]"
           }
           ${counter == 4 && " bg-[#A4FFAF]"}`}
         ></div>
         <div
-          className={`w-[10px] h-[28px] border-[1px]  
+          className={`w-[10px] h-[25px] border-[1px]  
            ${counter == 4 && " bg-[#A4FFAF]"}`}
         ></div>
       </div>

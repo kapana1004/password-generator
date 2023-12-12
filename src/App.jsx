@@ -26,6 +26,12 @@ function App() {
     setLength(e.target.value);
   };
 
+  const hideCopy = () => {
+    setTimeout(() => {
+      setCopy(false);
+    }, 1000);
+  };
+
   const calculateBackgroundColor = () => {
     // Customize this function according to your requirements
     // For example, setting a gradient based on the length value
@@ -71,6 +77,7 @@ function App() {
         </p>{" "}
         <CopyToClipboard text={password} onCopy={() => setCopy(true)}>
           <img
+            onClick={hideCopy}
             className=" w-[17.5px] h-[20px] cursor-pointer hover:opacity-50 "
             src={copyIcon}
             alt=""
