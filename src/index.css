@@ -10,4 +10,20 @@ body{
   justify-content: center;
   min-height: 100vh;
   align-items: center;   
+
+  input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px;
+    height: 20px;
+    background-color: white; /* Set the background color */
+    border: 1px solid #A4FFAF; /* Set the border color */
+    border-radius: 50%; /* Make it circular */
+    cursor: pointer;
+  }
+  input::-webkit-slider-thumb:hover{
+
+    background-color: black;
+    border: 1px solid #A4FFAF
+  }
 }

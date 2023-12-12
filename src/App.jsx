@@ -3,6 +3,7 @@ import checkIcon from "../public/assets/images/icon-check.svg";
 import copyIcon from "../public/assets/images/icon-copy.svg";
 import arrowIcon from "../public/assets/images/icon-arrow-right.svg";
 import Strength from "./components/Strength";
+import Checkbox from "./components/Checkbox";
 import greenArrowIcon from "../public/assets/images/icon-arrow-right-green.svg";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
@@ -61,7 +62,11 @@ function App() {
       <h1 className=" text-[#817D92] mb-[16px]">password generator</h1>
 
       <div className=" bg-[#24232C] w-[343px] h-[63px] flex justify-between items-center p-[10px] mb-[16px] relative">
-        <p className=" text-[24px] text-[#E6E5EA]">
+        <p
+          className={`text-[24px] ${
+            password ? "text-[#E6E5EA]" : " text-zinc-600"
+          }`}
+        >
           {password ? password : "P4$5W0rD!"}
         </p>{" "}
         <CopyToClipboard text={password} onCopy={() => setCopy(true)}>
@@ -72,8 +77,7 @@ function App() {
           />
         </CopyToClipboard>
         {copy && password ? (
-          <span className=" text-slate-400 text-[11px] absolute top-[75%] left-[87%]">
-            {" "}
+          <span className=" text-[#A4FFAF] text-[11px] absolute top-[75%] left-[88%]">
             copied
           </span>
         ) : null}
@@ -84,7 +88,7 @@ function App() {
           <span className=" text-[#A4FFAF] text-[24px]">{length}</span>
         </div>
         <input
-          className=" mb-[20px] appearance-none w-[100%] rounded-full "
+          className=" mb-[20px] appearance-none w-[100%] h-[8px] rounded-full "
           type="range"
           min={minValue}
           max={maxValue}
@@ -93,55 +97,17 @@ function App() {
           style={{ background: calculateBackgroundColor() }}
         />
 
-        <div className=" flex flex-row justify-start mb-[16px]">
-          <div
-            onClick={() => setIsUpperCase(!isUpperCase)}
-            className={`w-[20px] h-[20px] border-[1px] flex items-center justify-center flex-row ${
-              isUpperCase ? " bg-[#A4FFAF]" : " bg-black"
-            }`}
-          >
-            <img className=" text-neutral-50" src={checkIcon} alt="check" />
-          </div>
-
-          <span className=" ml-[20px] text-[#E6E5EA]">
-            Include Uppercase Letters
-          </span>
-        </div>
-        <div className=" flex flex-row mb-[16px]">
-          <div
-            onClick={() => setIsLowerCase(!isLowerCase)}
-            className={`w-[20px] h-[20px] border-[1px] flex items-center justify-center ${
-              isLowerCase ? " bg-[#A4FFAF]" : " bg-black"
-            }`}
-          >
-            <img className=" text-neutral-50" src={checkIcon} alt="check" />
-          </div>
-          <span className=" ml-[20px] text-[#E6E5EA]">
-            Include Lowercase Letters
-          </span>
-        </div>
-        <div className=" flex flex-row mb-[16px]">
-          <div
-            onClick={() => setIsDigits(!isDigits)}
-            className={`w-[20px] h-[20px] border-[1px] flex items-center justify-center ${
-              isDigits ? " bg-[#A4FFAF]" : " bg-black"
-            }`}
-          >
-            <img className=" text-neutral-50" src={checkIcon} alt="check" />
-          </div>
-          <span className="text-[#E6E5EA] ml-[20px]">Include Numbers</span>
-        </div>
-        <div className=" flex flex-row ">
-          <div
-            onClick={() => setIsSymbols(!isSymbols)}
-            className={`w-[20px] h-[20px] border-[1px] flex items-center justify-center ${
-              isSymbols ? " bg-[#A4FFAF]" : " bg-black"
-            }`}
-          >
-            <img className=" text-neutral-50" src={checkIcon} alt="check" />
-          </div>
-          <span className="text-[#E6E5EA] ml-[20px]">Include Symbols</span>
-        </div>
+        <Checkbox
+          checkIcon={checkIcon}
+          isDigits={isDigits}
+          isLowerCase={isLowerCase}
+          isSymbols={isSymbols}
+          isUpperCase={isUpperCase}
+          setIsDigits={setIsDigits}
+          setIsLowerCase={setIsLowerCase}
+          setIsSymbols={setIsSymbols}
+          setIsUpperCase={setIsUpperCase}
+        />
 
         <Strength
           isUpperCase={isUpperCase}

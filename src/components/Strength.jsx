@@ -16,10 +16,10 @@ export default function Strength({
     if (isDigits) count++;
     if (isSymbols) count++;
     setCounter(count);
-    if (counter == 0) setStrengthName("TOO WEAK!");
-    if (counter == 1) setStrengthName("WEAK!");
-    if (counter == 2) setStrengthName("MEDIUM");
-    if (counter == 3) setStrengthName("STRONG");
+    if (count == 1) setStrengthName("TOO WEAK!");
+    if (count == 2) setStrengthName("WEAK!");
+    if (count == 3) setStrengthName("MEDIUM");
+    if (count == 4) setStrengthName("STRONG");
   }, [isDigits, isLowerCase, isSymbols, isUpperCase]);
 
   return (
