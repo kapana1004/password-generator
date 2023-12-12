@@ -2,6 +2,7 @@ import { useState } from "react";
 import checkIcon from "../public/assets/images/icon-check.svg";
 import copyIcon from "../public/assets/images/icon-copy.svg";
 import arrowIcon from "../public/assets/images/icon-arrow-right.svg";
+import Strength from "./components/Strength";
 import greenArrowIcon from "../public/assets/images/icon-arrow-right-green.svg";
 import copy from "react-copy-to-clipboard";
 
@@ -127,86 +128,14 @@ function App() {
           </div>
           <span className="text-[#E6E5EA] ml-[20px]">Include Symbols</span>
         </div>
-        <div className=" w-[311px] bg-[#18171F] flex flex-row items-center justify-between h-[56px] p-[16px] mt-[32px] mb-[16px]">
-          <span className=" text-[#817D92] text-[16px]">STRENGTH</span>{" "}
-          <div className=" flex flex-row gap-[8px]">
-            <span className=" text-[#E6E5EA]">MEDIUM</span>
-            <div
-              className={`w-[10px] h-[28px] border-[1px] 
-              ${
-                isUpperCase || isLowerCase || isDigits || isSymbols
-                  ? " bg-[#F64A4A]"
-                  : null
-              } 
-              ${
-                isLowerCase & isUpperCase ||
-                isLowerCase & isSymbols ||
-                isLowerCase & isDigits ||
-                isUpperCase & isSymbols ||
-                isUpperCase & isDigits ||
-                isDigits & isSymbols
-                  ? " bg-[#FB7C58] "
-                  : null
-              }
-              ${
-                isLowerCase & isUpperCase & isDigits ||
-                isLowerCase & isUpperCase & isSymbols ||
-                isLowerCase & isDigits & isSymbols ||
-                isUpperCase & isDigits & isSymbols
-                  ? " bg-[#F8CD65]"
-                  : null
-              }
-              ${
-                isLowerCase & isUpperCase & isDigits & isSymbols &&
-                " bg-[green]"
-              }`}
-            ></div>
-            <div
-              className={`w-[10px] h-[28px] border-[1px]   
-             ${
-               isLowerCase & isUpperCase ||
-               isLowerCase & isSymbols ||
-               isLowerCase & isDigits ||
-               isUpperCase & isSymbols ||
-               isUpperCase & isDigits ||
-               isDigits & isSymbols
-                 ? " bg-[#FB7C58] "
-                 : null
-             }
-             ${
-               isLowerCase & isUpperCase & isDigits ||
-               isLowerCase & isUpperCase & isSymbols ||
-               isLowerCase & isDigits & isSymbols ||
-               isUpperCase & isDigits & isSymbols
-                 ? " bg-[#F8CD65]"
-                 : null
-             }
-             ${
-               isLowerCase & isUpperCase & isDigits & isSymbols && " bg-[green]"
-             }`}
-            ></div>
-            <div
-              className={`w-[10px] h-[28px] border-[1px]  ${
-                isLowerCase & isUpperCase & isDigits ||
-                isLowerCase & isUpperCase & isSymbols ||
-                isLowerCase & isDigits & isSymbols ||
-                isUpperCase & isDigits & isSymbols
-                  ? " bg-[#F8CD65]"
-                  : null
-              }
-              ${
-                isLowerCase & isUpperCase & isDigits & isSymbols &&
-                " bg-[green]"
-              }`}
-            ></div>
-            <div
-              className={`w-[10px] h-[28px] border-[1px]   ${
-                isLowerCase & isUpperCase & isDigits & isSymbols &&
-                " bg-[green]"
-              }`}
-            ></div>
-          </div>
-        </div>
+
+        <Strength
+          isUpperCase={isUpperCase}
+          isLowerCase={isLowerCase}
+          isDigits={isDigits}
+          isSymbols={isSymbols}
+        />
+
         <button
           className=" flex flex-row items-center  pl-[95px] w-[311px] h-[56px] bg-[#A4FFAF] hover:bg-buttonBlack mb-[16px] hover:text-[#A4FFAF] hover:border-[1px] hover:border-[#A4FFAF]"
           onClick={generatePassword}
